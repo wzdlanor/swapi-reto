@@ -1,0 +1,848 @@
+components:
+  schemas:
+    DevEspecies:
+      type: object
+      required:
+        - nombre
+        - classificacion
+        - designacion
+        - estatura
+        - color_piel
+        - color_cabello
+        - color_ojos
+        - promedio_vida
+        - mundo_natal
+        - idioma
+      properties:
+        Id:
+          type: string
+          description: El id de la especie
+        nombre:
+          type: string
+          description: El nombre de la especie
+        classificacion:
+          type: string
+          description: El nombre de la clasificacion
+        designacion:
+          type: string
+          description: La designacion de la especie
+        estatura:
+          type: string
+          description: La estatura de la especie
+        color_piel:
+          type: string
+          description: El color de la piel de la especie
+        color_cabello:
+          type: string
+          description: El color de cabello de la especie
+        color_ojos:
+          type: string
+          description: El color de ojos de la especie
+        promedio_vida:
+          type: string
+          description: El promedio de vida de la especie
+        mundo_natal:
+          type: string
+          description: El mundo natal de la especie
+        idioma:
+          type: string
+          description: El idioma de la especie
+        editado:
+          type: string
+          format: date-time
+          description: La fecha de edicion de la especie
+        creado:
+          type: string
+          format: date-time
+          description: La fecha de creacion de la espcie
+    SwapiPersonas:
+      type: object
+      required:
+        - nombre
+        - estatura
+        - peso
+        - color_cabello
+        - color_piel
+        - color_ojos
+        - anio_nacimiento
+        - sexo
+        - mundo_natal
+        - peliculas
+        - especies
+        - vehiculos
+        - naves
+        - creado
+        - editado
+        - enlace
+      properties:
+        id:
+          type: integer
+          description: El id de la persona
+        nombre:
+          type: string
+          description: El nombre de la persona
+        estatura:
+          type: string
+          description: La estatura de la persona
+        peso:
+          type: string
+          description: El peso de la persona
+        color_cabello:
+          type: string
+          description: El color de cabello de la persona
+        color_piel:
+          type: string
+          description: El color de piel de la persona
+        color_ojos:
+          type: string
+          description: El color de ojos de la persona
+        anio_nacimiento:
+          type: string
+          description: El año de nacimiento de la persona
+        sexo:
+          type: string
+          description: El sexo de la persona
+        mundo_natal:
+          type: string
+          description: El mundo natal de la persona
+        peliculas:
+          type: array
+          description: Informacion de las peliculas de la persona
+        especies:
+          type: array
+          description: Informacion de las especies de la persona
+        vehiculos:
+          type: array
+          description: Informacion de los vehiculos de la persona
+        naves:
+          type: array
+          description: Informacion de las naves de la persona
+        creado:
+          type: string
+          format: date-time
+          description: La fecha de creacion de la persona
+        editado:
+          type: string
+          format: date-time
+          description: La fecha de edicion de la persona
+        enlace:
+          type: string
+          description: El enlace de la persona
+    SwapiPeliculas:
+      type: object
+      required:
+        - id_episodio
+        - titulo
+        - apertura
+        - director
+        - productor
+        - estreno
+        - personajes
+        - planetas
+        - naves
+        - vehiculos
+        - especies
+        - creado
+        - editado
+        - enlace
+      properties:
+        id_episodio:
+          type: integer
+          description: El id de la pelicula
+        titulo:
+          type: string
+          description: El titulo de la pelicula
+        apertura:
+          type: string
+          description: La apertura de la pelicula
+        director:
+          type: string
+          description: El director de la pelicula
+        productor:
+          type: string
+          description: El productor de la pelicula
+        estreno:
+          type: string
+          description: El estreno de la pelicula
+        personajes:
+          type: array
+          description: Informacion de los personajes de la pelicula
+        planetas:
+          type: array
+          description: Informacion de los planetsa de la pelicula
+        naves:
+          type: array
+          description: Informacion de las naves de la pelicula
+        vehiculos:
+          type: array
+          description: Informacion de los vehiculos de la pelicula
+        especies:
+          type: array
+          description: Informacion de las especies de la pelicula
+        creado:
+          type: string
+          format: date-time
+          description: La fecha de creacion de la pelicula
+        editado:
+          type: string
+          format: date-time
+          description: La fecha de edicion de la pelicula
+        enlace:
+          type: string
+          description: El enlace de la pelicula
+    SwapiPlanetas:
+      type: object
+      required:
+        - nombre
+        - periodo_rotacion
+        - periodo_orbital
+        - diametro
+        - clima
+        - gravedad
+        - terreno
+        - agua_superficie
+        - poblacion
+        - residentes
+        - peliculas
+        - creado
+        - editado
+        - enlace
+      properties:
+        nombre:
+          type: string
+          description: El nombre del planeta
+        periodo_rotacion:
+          type: string
+          description: El periodo de rotacion del planeta
+        periodo_orbital:
+          type: string
+          description: El periodo orbital del planeta
+        diametro:
+          type: string
+          description: El diametro del planeta
+        clima:
+          type: string
+          description: El clima del planeta
+        gravedad:
+          type: string
+          description: La gravedad del planeta
+        terreno:
+          type: string
+          description: El terreno del planeta
+        agua_superficie:
+          type: string
+          description: La superficie del agua del planeta
+        poblacion:
+          type: string
+          description: La poblacion del planeta
+        residentes:
+          type: array
+          description: Informacion de los residentes del planeta
+        peliculas:
+          type: array
+          description: Informacion de las peliculas del planeta
+        creado:
+          type: string
+          format: date-time
+          description: La fecha de creacion del planeta
+        editado:
+          type: string
+          format: date-time
+          description: La fecha de edicion del planeta
+        enlace:
+          type: string
+          description: El enlace del planeta
+
+/dev/especies:
+  get:
+    summary: Mostras las Especies
+    tags: [DevEspecies]
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+  post:
+    summary: Crear Especie
+    tags: [DevEspecies]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              nombre:
+                type: string
+                description: El nombre de la especie
+              classificacion:
+                type: string
+                description: El nombre de la clasificacion
+              designacion:
+                type: string
+                description: La designacion de la especie
+              estatura:
+                type: string
+                description: La estatura de la especie
+              color_piel:
+                type: string
+                description: El color de la piel de la especie
+              color_cabello:
+                type: string
+                description: El color de cabello de la especie
+              color_ojos:
+                type: string
+                description: El color de ojos de la especie
+              promedio_vida:
+                type: string
+                description: El promedio de vida de la especie
+              mundo_natal:
+                type: string
+                description: El mundo natal de la especie
+              idioma:
+                type: string
+                description: El idioma de la especie
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+
+/dev/especies/{Id}:
+  get:
+    summary: Mostrar Especie
+    tags: [DevEspecies]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id de la especie a mostrar
+        schema:
+          type: string
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+  put:
+    summary: Actualizar Especie
+    tags: [DevEspecies]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id de la especie a Actualizar
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              nombre:
+                type: string
+                description: El nombre de la especie
+              classificacion:
+                type: string
+                description: El nombre de la clasificacion
+              designacion:
+                type: string
+                description: La designacion de la especie
+              estatura:
+                type: string
+                description: La estatura de la especie
+              color_piel:
+                type: string
+                description: El color de la piel de la especie
+              color_cabello:
+                type: string
+                description: El color de cabello de la especie
+              color_ojos:
+                type: string
+                description: El color de ojos de la especie
+              promedio_vida:
+                type: string
+                description: El promedio de vida de la especie
+              mundo_natal:
+                type: string
+                description: El mundo natal de la especie
+              idioma:
+                type: string
+                description: El idioma de la especie
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+  delete:
+    summary: Eliminar Especie
+    tags: [DevEspecies]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id de la especie a Eliminar
+        schema:
+          type: string
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/DevEspecies'
+
+/swapi/personas:
+  get:
+    summary: Mostras las Personas
+    tags: [SwapiPersonas]
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPersonas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPersonas'
+
+/swapi/personas/{Id}:
+  get:
+    summary: Mostrar Personas
+    tags: [SwapiPersonas]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id de la persona a mostrar
+        schema:
+          type: string
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPersonas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPersonas'
+
+/swapi/peliculas:
+  get:
+    summary: Mostras las Peliculas
+    tags: [SwapiPeliculas]
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPeliculas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPeliculas'
+
+/swapi/peliculas/{Id}:
+  get:
+    summary: Mostrar Peliculas
+    tags: [SwapiPeliculas]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id de la pelicula a mostrar
+        schema:
+          type: string
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPeliculas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPeliculas'
+
+/swapi/planetas:
+  get:
+    summary: Mostras los Planeta
+    tags: [SwapiPlanetas]
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPlanetas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPlanetas'
+
+/swapi/planetas/{Id}:
+  get:
+    summary: Mostrar Planeta
+    tags: [SwapiPlanetas]
+    parameters:
+      - in: path
+        name: Id
+        required: true
+        description: Id del planeta a mostrar
+        schema:
+          type: string
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+                data:
+                  type: array
+                  description: El dato consultado
+                  items:
+                    type: object
+              items:
+                $ref: '#/components/schemas/SwapiPlanetas'
+      default:
+        description: Error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  description: El estado de la respuesta
+                codigo:
+                  type: integer
+                  description: El codigo del error
+                mensaje:
+                  type: string
+                  description: Mensaje del estado de la respuesta
+              items:
+                $ref: '#/components/schemas/SwapiPlanetas'

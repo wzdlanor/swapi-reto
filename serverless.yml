@@ -1,0 +1,44 @@
+service: aws-node-express-dynamodb-api-project
+frameworkVersion: '3'
+
+custom:
+  tableName: 'SWTableReto'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [SWTableReto, Arn]
+  environment:
+    SW_TABLE: ${self:custom.tableName}
+
+functions:
+  api:
+    handler: src/api.handler
+    events:
+      - httpApi: '*'
+
+resources:
+  Resources:
+    SWTableReto:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: Id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: Id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
